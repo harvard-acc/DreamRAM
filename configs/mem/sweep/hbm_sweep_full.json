@@ -1,0 +1,44 @@
+{
+    "memconfig": {
+        "baseline": "configs/mem/baseline/hbm3_baseline.json",
+        "organization": {
+            "ranks": [1,2],
+            "channels": [8,16,32,64,128],
+            "channels per die": [2,4,8],
+            "pseudochannels": [2],
+            "horizontal bankgroups": [1,2],
+            "vertical bankgroups": [2,4,8],
+            "banks": [2,4,8]
+        },
+        "bank": {
+            "subarrays": [8,12,16,24,32],
+            "mats": [16,32,64]
+        },
+        "mat": {
+            "wordlines": [256,512,1024],
+            "bitlines": [256,512,1024]
+        },
+        "blsa": {
+            "type": ["blsa","brvsa"]
+        },
+        "databus": {
+            "pages per bgbus mux": [4],
+            "mdl-bgbus serdes": [1],
+            "bgbuses per gbus": [2],
+            "bgbus-gbus serdes": [1],
+            "gbuses": [2],
+            "gbus-tsv serdes": [4],
+            "tsv-dq serdes": [4]
+        },
+        "mods": {
+            "ha layout": [0,1],
+            "ha full": [0,1],
+            "subchannels": [1,4,16],
+            "mdl over mat": [0,1],
+            "salp groups": [1,2],
+            "salp all": [0,1],
+            "mdls": [8,16,32,64,128],
+            "atom size": [256]
+        }
+    }
+}

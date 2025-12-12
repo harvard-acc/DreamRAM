@@ -1,0 +1,73 @@
+{
+    "tech": {
+        "die": {
+            "max dimension": 13000
+        },
+        "unscaled node": {
+            "feature size": 0.026
+        },
+        "tsv": {
+            "tsv pitch": 55,
+            "tsv koz": 27.5,
+            "tsv height": 50,
+            "tsv c": 1.1,
+            "tsv r load": 100,
+            "tsv c load": 0.12
+        },
+        "capacitance": {
+            "c bus": 0.0003,
+            "c ca": 0.00035,
+            "c mwl": 0.00155,
+            "c lwl": 0.000886,
+            "c bl per cell": 0.0000417,
+            "c cell": 0.008,
+            "c blsa": 0.0033,
+            "c csl": 0.00098,
+            "c ldl": 0.00049,
+            "c mdl": 0.00049,
+            "c dq": 2.4,
+            "same layer proportions": {
+                "min pitch": 0.8,
+                "min pitch top": 0.89,
+                "sparse": 0.66,
+                "sparse top": 0.8
+            }
+        },
+        "sense amp": {
+            "type": {
+                "blsa": {
+                    "trcd": 13.9,
+                    "trcd signal": 2.9,
+                    "wordlines ref": 640
+                },
+                "brvsa": {
+                    "trcd": 10.8,
+                    "brv delta v boost": 1.75,
+                    "brvsa cs proportion": 0.89,
+                    "brvsa height ratio": 1.33
+                }
+            },
+            "cell leak": 0.2,
+            "min delta v": 0.1,
+            "mdl over mat height ratio": 1.26
+        },
+        "voltage": {
+            "external": {
+                "vdd": 1.1,
+                "vpp": 1.8
+            },
+            "internal": {
+                "vpp": 2.5,
+                "vddql": 0.4,
+                "vcore": 1.1,
+                "vpp pump eff": 0.5
+            }
+        },
+        "tile size": {
+            "column decoder height": 150,
+            "row decoder width": 82.5,
+            "blsa height": 11,
+            "swd width": 5
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "memconfig": {
+        "baseline": "configs/mem/baseline/hbm2e.json",
+        "organization": {
+            "ranks": [2],
+            "channels": [8],
+            "channels per die": [2],
+            "pseudochannels": [2],
+            "horizontal bankgroups": [2],
+            "vertical bankgroups": [2],
+            "banks": [4]
+        },
+        "bank": {
+            "subarrays": [32],
+            "mats": [32]
+        },
+        "mat": {
+            "wordlines": [512],
+            "bitlines": [512]
+        },
+        "blsa": {
+            "type": ["blsa"]
+        },
+        "databus": {
+            "pages per bgbus mux": [4],
+            "mdl-bgbus serdes": [1],
+            "bgbuses per gbus": [1],
+            "bgbus-gbus serdes": [2],
+            "gbuses": [2],
+            "gbus-tsv serdes": [2],
+            "tsv-dq serdes": [4]
+        },
+        "mods": {
+            "ha layout": [0],
+            "ha full": [0],
+            "subchannels": [1],
+            "mdl over mat": [0],
+            "salp groups": [1],
+            "salp all": [0],
+            "mdls": [8],
+            "atom size": [256]
+        }
+    }
+}

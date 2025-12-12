@@ -1,0 +1,54 @@
+{
+    "memconfig": {
+        "organization": {
+            "ranks": 2,
+            "channels": 16,
+            "channels per die": 4,
+            "pseudochannels": 2,
+            "horizontal bankgroups": 1,
+            "vertical bankgroups": 4,
+            "banks": 4
+        },
+        "bank": {
+            "subarrays": 16,
+            "mats": 32,
+            "repair subarrays": 0,
+            "ecc overhead": 0.0625,
+            "od-ecc overhead": 0.125
+        },
+        "mat": {
+            "wordlines": 512,
+            "bitlines": 512,
+            "wordline overhead": 0.015,
+            "bitline overhead": 0.015
+        },
+        "blsa": {
+            "type": "blsa"
+        },
+        "databus": {
+            "pages per bgbus mux": 4,
+            "mdl-bgbus serdes": 1,
+            "bgbuses per gbus": 2,
+            "bgbus-gbus serdes": 1,
+            "gbuses": 2,
+            "gbus-tsv serdes": 4,
+            "tsv-dq serdes": 4,
+            "dbi overhead": 0.125,
+            "dbi bgbus": 1
+        },
+        "mods": {
+            "ha layout": 0,
+            "ha full": 0,
+            "subchannels": 1,
+            "mdl over mat": 0,
+            "salp groups": 1,
+            "salp all": 0,
+            "mdls": 8,
+            "atom size": 256
+        },
+        "calibration": {
+            "tck": 2,
+            "tcl": 38.4
+        }
+    }
+}

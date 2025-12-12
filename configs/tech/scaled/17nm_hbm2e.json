@@ -1,0 +1,27 @@
+{
+    "tech": {
+        "baseline": "configs/tech/baseline/2ynm_baseline_hbm2e.json",
+        "scaled node": {
+            "feature size": 0.017,
+            "wlp": 0.043,
+            "blp": 0.050,
+            "ldl to wl pitch": 4,
+            "mdl to bl pitch": 4
+        },
+        "scale confidence": {
+            "c scale conf": 0.7,
+            "c blsa scale conf": 0.7,
+            "c tsv scale conf": 1,
+            "logic scale conf": 0.9,
+            "column decode scale conf": 0.9,
+            "row decode scale conf": 0.9,
+            "swd scale conf": 0.7,
+            "blsa scale conf": 0.7
+        },
+        "tsv": {
+            "tsv pitch": 55,
+            "tsv koz": 27.5,
+            "tsv height": 30
+        }
+    }
+}
