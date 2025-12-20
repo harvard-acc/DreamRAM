@@ -1,6 +1,8 @@
 # DreamRAM
 ## Introduction
-DreamRAM analytically models custom 3D die-stacked DRAM architectures based on High Bandwidth Memory (HBM3). DreamRAM models bandwidth, capacity, energy, latency, and area by exposing fine-grained design parameters at the MAT, subarray, bank, and inter-bank levels. Providing a unified and extensible exploration framework, DreamRAM enables researchers and designers to uncover new opportunities for workload-tailored memory design.
+DreamRAM analytically models custom 3D die-stacked DRAM architectures based on High Bandwidth Memory (HBM3). DreamRAM models bandwidth, capacity, energy, latency, and area by exposing fine-grained design parameters at the MAT, subarray, bank, and inter-bank levels. Providing a unified and extensible exploration framework, DreamRAM enables researchers and designers to uncover new opportunities for workload-tailored memory design. 
+
+DreamRAM has been accepted to DATE 2026. You can find the DreamRAM paper here: [https://arxiv.org/abs/2512.12106](https://arxiv.org/abs/2512.12106)
 
 ## Usage
 ### Requirements
@@ -23,7 +25,7 @@ python3 plot.py [-i INPUT_LABEL]
 The input label should match the output label of your run. Plots are saved to the plot/ directory.
 
 ## Citation
-DreamRAM has been accepted to DATE 2026: [https://arxiv.org/abs/2512.12106](https://arxiv.org/abs/2512.12106)
+DreamRAM has been accepted to DATE 2026. In the meantime, you can find our paper at [https://arxiv.org/abs/2512.12106](https://arxiv.org/abs/2512.12106)
 
 ## Authors
 Victor Cai, Jennifer Zhou, Haebin Do, David Brooks, and Gu-Yeon Wei
