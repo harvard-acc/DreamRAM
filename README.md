@@ -1,6 +1,6 @@
 # DreamRAM
 ## Introduction
-DreamRAM is a Fine-Grained Configurable Design Space Modeling Tool for Custom 3D Die-Stacked DRAM. DreamRAM analytically models bandwidth, capacity, energy, latency, and area while exposing fine-grained design parameters at the MAT, subarray, bank, and inter-bank levels. By providing a unified and extensible exploration framework, DreamRAM enables researchers and designers to uncover new opportunities for workload-tailored memory design.
+DreamRAM analytically models custom 3D die-stacked DRAM architectures based on High Bandwidth Memory (HBM3). DreamRAM models bandwidth, capacity, energy, latency, and area by exposing fine-grained design parameters at the MAT, subarray, bank, and inter-bank levels. Providing a unified and extensible exploration framework, DreamRAM enables researchers and designers to uncover new opportunities for workload-tailored memory design.
 
 ## Usage
 ### Requirements
