@@ -23,7 +23,7 @@ python3 plot.py [-i INPUT_LABEL]
 The input label should match the output label of your run. Plots are saved to the plot/ directory.
 
 ## Citation
-You can find a pre-print of the DreamRAM paper here, as accepted to DATE 2026: (pending ArXiv submission)
+DreamRAM has been accepted to DATE 2026: [https://arxiv.org/abs/2512.12106](https://arxiv.org/abs/2512.12106)
 
 ## Authors
 Victor Cai, Jennifer Zhou, Haebin Do, David Brooks, and Gu-Yeon Wei
