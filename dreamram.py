@@ -417,11 +417,12 @@ if __name__ == '__main__':
     output_default = True
 
     args = sys.argv[1:]
-    options = "hmto:"
+    options = "hm:t:o:"
     long_options = ["help", "mem", "tech", "out"]
 
     try:
         arguments, values = getopt.getopt(args, options, long_options)
+        print(arguments)
         for currentArg, currentVal in arguments:
             if currentArg in ("-h", "--Help"):
                 print("Usage:")
@@ -433,18 +434,18 @@ if __name__ == '__main__':
                 print("")
                 exit()
             elif currentArg in ("-m", "--mem"):
-                print("Set memory file to:", currentVal)
+                print(f"Set memory file to: {currentVal}")
                 hbm_json_name = currentVal
                 hbmtech_default = False
             elif currentArg in ("-t", "--tech"):
-                print("Set tech file to:", currentVal)
+                print(f"Set tech file to: {currentVal}")
                 tech_json_name = currentVal
                 hbmtech_default = False
             elif currentArg in ("-o", "--out"):
-                print("Set output label to:", currentVal)
+                print(f"Set output label to: {currentVal}")
                 output_csv_name = f"data/{currentVal}/hbm3_{currentVal}.csv"
                 output_default = False
-                os.makedirs(f'data/{OUTPUT_LABEL}', exist_ok=True)
+                os.makedirs(f'data/{currentVal}', exist_ok=True)
 
     except getopt.error as err:
         print(str(err))
