@@ -1,0 +1,26 @@
+{
+    "always_visible": ["id","total_area_mmmm","capacity_gbytes","bw_gbytes","worst_latency_ns","metric_e_per_bit_seq","metric_e_per_bit_closed","worst_power_w"],
+    "subgroups":[
+        {
+            "name":"Inputs",
+            "columns":["sids","channels","ch_per_die","pch","horiz_bg","vert_bg","banks","subarrays","mat_rows","mats","mat_cols","brvsa","ldls_mdls","mdl_over_mat","csl_mdl_over_mat","csl_mdl_shared_layer","ha_layout","ha_double_ldls","subchannels","salp_groups","salp_all","pages_per_bgbus_mux","mdl_bgbus_sd","bgbuses_per_gbus","bgbus_gbus_sd","gbus_tsv_sd","tsv_dq_sd","atom_size"]
+        },
+        {
+            "name":"Architectural Breakdown",
+            "columns":["n_dq_total","dq_datarate_gbps","dies","page_size_bytes","atoms_per_page","ind_pages"]
+        },
+        {
+            "name":"Area/Capacity Breakdown",
+            "columns":["die_x_mm","die_y_mm","die_y_tsv_area_mm","density_gbit_mm2_ecc","bank_x_um","bank_y_um"]
+        },
+        {
+            "name":"Bandwidth/Latency Breakdown",
+            "columns":["core_freq_ghz","peri_tck","atom_time","tcl","trcd","trp","trcdwr","tras","trc","trrds","trrdl","tfaw","trtp","twr","tccdl","tccds"]
+        },
+        {
+            "name":"Energy Breakdown",
+            "columns":["e_cmd_pre_pj","e_cmd_act_pj","e_cmd_rd_pj","e_set_base_row","e_set_tsv_row","e_set_row","e_set_mwl","e_set_lwl","e_set_bl_act","e_set_bl_pre","e_set_base_col","e_set_tsv_col","e_set_col","e_set_csl","e_set_ldl","e_set_mdl","e_set_bus","e_set_tsv_data","e_set_base_data","e_set_dq"]
+        }
+    ],
+    "ungrouped_name": "Other"
+}

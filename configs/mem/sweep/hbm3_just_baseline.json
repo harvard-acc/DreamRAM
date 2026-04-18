@@ -2,7 +2,7 @@
     "memconfig": {
         "baseline": "configs/mem/baseline/hbm3_baseline.json",
         "organization": {
-            "ranks": [2],
+            "sids": [2],
             "channels": [16],
             "channels per die": [4],
             "pseudochannels": [2],
@@ -22,19 +22,19 @@
             "type": ["blsa"]
         },
         "databus": {
-            "pages per bgbus mux": [4],
+            "pages per bgbus mux": [1],
             "mdl-bgbus serdes": [1],
             "bgbuses per gbus": [2],
             "bgbus-gbus serdes": [1],
-            "gbuses": [2],
-            "gbus-tsv serdes": [4],
-            "tsv-dq serdes": [4]
+            "gbus-tsv serdes": [1],
+            "tsv-dq serdes": [8]
         },
         "mods": {
             "ha layout": [0],
             "ha full": [0],
             "subchannels": [1],
-            "mdl over mat": [0],
+            "mdl/csl config": [3],
+            "csl mdl shared layer": [1],
             "salp groups": [1],
             "salp all": [0],
             "mdls": [8],

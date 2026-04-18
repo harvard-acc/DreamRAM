@@ -48,7 +48,7 @@
         },
         "calibration": {
             "tck": 2, 
-            "tcl": 38.4
+            "tcl": 24
         }
     }
 }

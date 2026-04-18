@@ -1,0 +1,95 @@
+id, Config Sweep ID
+sids, SIDs
+channels, Channels
+ch_per_die, Channels/Die
+pch, Pseudochannels
+horiz_bg, Horizontal Bankgroups
+vert_bg, Vertical Bankgroups
+banks, Banks
+subarrays, Subarrays
+mat_rows, Wordlines/MAT
+mats, MATs/Subarrray
+mat_cols, Bitlines/MAT
+brvsa, BRVSA
+ldls_mdls, MDLs/MAT
+mdl_over_mat, DL-over-MAT
+csl_mdl_shared_layer, CSL/MDL Share Layer
+ha_layout, Ha Layout-Only
+ha_double_ldls, Ha Half-Page (full)
+subchannels, Subchannels
+salp_groups, SALP Groups
+salp_all, SALP MASA
+pages_per_bgbus_mux, Pages/BGBUS Mux
+mdl_bgbus_sd, MDL-BGBUS SerDes
+bgbuses_per_gbus, BGBUSes
+bgbus_gbus_sd, BGBUS-GBUS SerDes
+gbus_tsv_sd, GBUS-TSV SerDes
+tsv_dq_sd, TSV-DQ SerDes
+atom_size, Atom Size
+pumps_per_atom, Pumps/Atom
+dies, Memory Dies
+die_x_mm, Die Width in X (mm)
+die_y_mm, Die Height in Y (mm)
+die_y_tsv_area_mm, TSV-Area Height in Y (mm)
+total_area_mmmm, Total Area (mm^2)
+bank_x_um, Bank Width in X (um)
+bank_y_um, Bank Height in Y (um)
+capacity_gbytes, Capacity (GB)
+density_gbit_mm2_ecc, Density (Gb/mm^2)
+page_size_bytes, Page Size (B)
+atoms_per_page, Atoms/Page
+ind_pages, Pages/Bank
+n_csl, CSLs Width
+n_mdl, MDLs Width
+n_bgbus_b, BGBUS Width
+n_tsv, TSV Width
+n_dq, DQ Width (PC/SC)
+n_dq_total, Total DQs with ECC
+core_freq_ghz, Core Frequency (GHz)
+dq_datarate_gbps, DQ Datarate (Gbps)
+bw_gbytes, Bandwidth (GB/s)
+atom_time, tBURST (ns)
+tcl, tCL (ns)
+trcd, tRCD (ns)
+trp, tRP (ns)
+trcdwr, tRCDWR (ns)
+tras, tRAS (ns)
+trc, tRC (ns)
+trrds, tRRDS (ns)
+trrdl, tRRDL (ns)
+tfaw, tFAW (ns)
+trtp, tRTP (ns)
+twr, tWR (ns)
+peri_tck, PERI_tCK (ns)
+tccdl, tCCDL (ns)
+tccds, tCCDS (ns)
+worst_latency_ns, Worst-case Latency (ns)
+blsa_deltav, BLSA Sensing Margin (V)
+cell_eff, Cell Efficiency (Die)
+e_cmd_pre_pj, Energy: PRE (pJ)
+e_cmd_act_pj, Energy: ACT (pJ)
+e_cmd_rd_pj, Energy: RD (pJ)
+e_set_base_row, Energy: Base-die RAS (pJ)
+e_set_tsv_row, Energy: TSV RAS (pJ)
+e_set_row, Energy: Memory-die RAS (pJ)
+e_set_mwl, Energy: MWLs (pJ)
+e_set_lwl, Energy: LWLs (pJ)
+e_set_bl_act, Energy: BL ACT (pJ)
+e_set_bl_pre, Energy: BL PRE (pJ)
+e_set_base_col, Energy: Base-die CAS (pJ)
+e_set_tsv_col, Energy: TSV CAS (pJ)
+e_set_col, Energy: Memory-die CAS (pJ)
+e_set_csl, Energy: CSLs (pJ)
+e_set_ldl, Energy: LDLs (pJ)
+e_set_mdl, Energy: MDLs (pJ)
+e_set_bus, Energy: BGBUS+GBUS (pJ)
+e_set_tsv_data, Energy: TSV (pJ)
+e_set_base_data, Energy: Base-die Data (pJ)
+e_set_dq, Energy: DQs (pJ)
+metric_bw_per_cap, Bandwidth/Capacity
+metric_e_per_bit_seq, Streaming Energy-per-Bit (pJ/b)
+metric_e_per_bit_closed, Worst-case Energy-per-Bit (pJ/b)
+worst_power_w, Worst-case Power (W)
+csl_mdl_over_mat, CSL/MDL Over MAT
+storage_density, Storage Density (Gb/mm^2)
+edp, Energy-Delay Product (pJ*ns)

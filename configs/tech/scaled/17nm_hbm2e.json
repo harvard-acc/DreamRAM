@@ -17,11 +17,6 @@
             "row decode scale conf": 0.9,
             "swd scale conf": 0.7,
             "blsa scale conf": 0.7
-        },
-        "tsv": {
-            "tsv pitch": 55,
-            "tsv koz": 27.5,
-            "tsv height": 30
         }
     }
 }

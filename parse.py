@@ -27,7 +27,7 @@ def mem_baseline(file_path):
     # Create dictionary
     config_details = {
         'id': 0,
-        'ranks': organization.get('ranks'),
+        'sids': organization.get('sids'),
         'channels': organization.get('channels'),
         'ch_per_die': organization.get('channels per die'),
         'pch': organization.get('pseudochannels'),
@@ -40,7 +40,10 @@ def mem_baseline(file_path):
         'mat_cols': mat.get('bitlines'),
         'brvsa': 0 if blsa.get('type')=="blsa" else 1,
         'ldls_mdls': mods.get('mdls'),
-        'mdl_over_mat': mods.get('mdl over mat'),
+        # 'mdl_csl_over_mat': mods.get('mdl/csl config') >> 1,
+        # 'mdl_over_mat': mods.get('mdl/csl config') & 1,
+        'mdl_over_mat': mods.get('mdl/csl config'),
+        'csl_mdl_shared_layer': mods.get('csl mdl shared layer', 0),
         'ha_layout': mods.get('ha layout'),
         'ha_double_ldls': mods.get('ha full'),
         'subchannels': mods.get('subchannels'),
@@ -50,7 +53,7 @@ def mem_baseline(file_path):
         'mdl_bgbus_sd': databus.get('mdl-bgbus serdes'),
         'bgbuses_per_gbus': databus.get('bgbuses per gbus'),
         'bgbus_gbus_sd': databus.get('bgbus-gbus serdes'),
-        'gbuses_out': databus.get('gbuses'),
+        #'gbuses_out': databus.get('gbuses'),
         'gbus_tsv_sd': databus.get('gbus-tsv serdes'),
         'tsv_dq_sd': databus.get('tsv-dq serdes'),
         'atom_size': mods.get('atom size'),
@@ -67,7 +70,13 @@ def mem_baseline(file_path):
         '_tcl': calibration.get('tcl'),
         '_channels': organization.get('channels'),
         '_ch_per_die': organization.get('channels per die'),
-        '_ranks': organization.get('ranks')
+        '_sids': organization.get('sids'),
+        '_timing_baseline': memconfig.get('timing baseline'), 
+        '_vert_bg': organization.get('vertical bankgroups'), 
+        '_pages_per_bgbus_mux': databus.get('pages per bgbus mux'),
+        '_mdl_bgbus_sd': databus.get('mdl-bgbus serdes'),
+        '_bgbus_gbus_sd': databus.get('bgbus-gbus serdes'),
+        '_gbus_tsv_sd': databus.get('gbus-tsv serdes')
     }
 
     return config_details
@@ -98,7 +107,7 @@ def mem_baseline_and_sweep(file_path):
 
     # dictionary
     sweep_details = {
-        'ranks_list': organization.get('ranks', []),
+        'sids_list': organization.get('sids', []),
         'channels_list': organization.get('channels', []),
         'ch_per_die_list': organization.get('channels per die', []),
         'pch_list': organization.get('pseudochannels', []),
@@ -111,7 +120,10 @@ def mem_baseline_and_sweep(file_path):
         'mat_cols_list': mat.get('bitlines', []),
         'brvsa_list': blsa.get('type', []),
         'ldls_mdls_list': mods.get('mdls', []),
-        'mdl_over_mat_list': mods.get('mdl over mat', []),
+        # 'mdl_csl_over_mat_list': mods.get('mdl/csl config', []) >> 1,
+        # 'mdl_over_mat_list': mods.get('mdl/csl config', []) & 1,
+        'mdl_over_mat_list': mods.get('mdl/csl config', []),
+        'csl_mdl_shared_layer_list': mods.get('csl mdl shared layer', []),
         'ha_layout_list': mods.get('ha layout', []),
         'ha_double_ldls_list': mods.get('ha full', []),
         'subchannels_list': mods.get('subchannels', []),
@@ -121,7 +133,7 @@ def mem_baseline_and_sweep(file_path):
         'mdl_bgbus_sd_list': databus.get('mdl-bgbus serdes', []),
         'bgbuses_per_gbus_list': databus.get('bgbuses per gbus', []),
         'bgbus_gbus_sd_list': databus.get('bgbus-gbus serdes', []),
-        'gbuses_out_list': databus.get('gbuses', []),
+        #'gbuses_out_list': databus.get('gbuses', []),
         'gbus_tsv_sd_list': databus.get('gbus-tsv serdes', []),
         'tsv_dq_sd_list': databus.get('tsv-dq serdes', []),
         'atom_size_list': mods.get('atom size', [])
@@ -132,6 +144,89 @@ def mem_baseline_and_sweep(file_path):
     baseline_details = mem_baseline(baseline_path)
 
     return baseline_details, sweep_details
+
+
+def timing_baseline(file_path, a):
+    # Parse HBM3 timing baseline and merge into tech dict (overrides process baseline values)
+
+    try:
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' was not found.")
+        return a
+    except json.JSONDecodeError:
+        print(f"Error: Could not decode JSON from the file '{file_path}'.")
+        return a
+
+    timing = data.get('timing', {})
+    s = timing.get('sense amp', {})
+    decomp = timing.get('decomposition', {})
+    cal = timing.get('calibration', {})
+
+    # sense amp overrides
+    if s.get('trcd') is not None:
+        a['_trcd'] = s['trcd']
+    if s.get('trcd signal') is not None:
+        a['_trcd_signal'] = s['trcd signal']
+    if s.get('wordlines ref') is not None:
+        a['_mat_rows_ref'] = s['wordlines ref']
+    if s.get('trcd brvsa') is not None:
+        a['_trcd_brvsa'] = s['trcd brvsa']
+    if s.get('brv delta v boost') is not None:
+        a['_brvsa_brv_deltav_boost'] = s['brv delta v boost']
+    if s.get('brvsa cs proportion') is not None:
+        a['_brvsa_cs_proportion'] = s['brvsa cs proportion']
+    if s.get('brvsa height ratio') is not None:
+        a['_brvsa_height_ratio'] = s['brvsa height ratio']
+    if s.get('cell leak') is not None:
+        a['cell_leak'] = s['cell leak']
+    if s.get('min delta v') is not None:
+        a['_min_deltav'] = s['min delta v']
+    if s.get('mdl over mat height ratio') is not None:
+        a['_mdl_over_mat_height_ratio'] = s['mdl over mat height ratio']
+
+    # decomposition overrides
+    if decomp.get('trcdwr blsa fraction') is not None:
+        a['_trcdwr_blsa_fraction'] = decomp['trcdwr blsa fraction']
+    if decomp.get('tras restore') is not None:
+        a['_tras_restore'] = decomp['tras restore']
+    if decomp.get('twr restore') is not None:
+        a['_twr_restore'] = decomp['twr restore']
+    if decomp.get('trrds') is not None:
+        a['_trrds'] = decomp['trrds']
+    if decomp.get('trrdl') is not None:
+        a['_trrdl'] = decomp['trrdl']
+
+    # calibration overrides
+    if cal.get('tck') is not None:
+        a['_tck'] = cal['tck']
+    if cal.get('tcl') is not None:
+        a['_tcl'] = cal['tcl']
+    if cal.get('die y') is not None:
+        a['_die_y'] = cal['die y']
+
+    # voltage overrides
+    v = timing.get('voltage', {})
+    if v.get('vcore') is not None:
+        a['vcore_int'] = v['vcore']
+    if v.get('vperi') is not None:
+        a['vperi'] = v['vperi']
+    if v.get('vpre ldl') is not None:
+        a['vpre_ldl'] = v['vpre ldl']
+
+    # tsv overrides
+    tsv = timing.get('tsv', {})
+    if tsv.get('tsv pitch') is not None:
+        a['tsv_pitch'] = tsv['tsv pitch']
+    if tsv.get('tsv koz') is not None:
+        a['tsv_koz'] = tsv['tsv koz']
+    if tsv.get('tsv height') is not None:
+        a['tsv_height'] = tsv['tsv height']
+    if tsv.get('ubump pitch') is not None:
+        a['ubump_pitch'] = tsv['ubump pitch']
+
+    return a
 
 
 def tech_baseline(file_path, a):
@@ -172,6 +267,7 @@ def tech_baseline(file_path, a):
     a['_c_tsv'] = t.get('tsv c')
     a['_r_load'] = t.get('tsv r load')
     a['_c_load'] = t.get('tsv c load')
+    a['_ubump_pitch'] = t.get('ubump pitch', 55)
     a['_c_bus'] = c.get('c bus')
     a['_c_ca'] = c.get('c ca')
     a['_c_mwl'] = c.get('c mwl')
@@ -183,6 +279,7 @@ def tech_baseline(file_path, a):
     a['_c_ldl'] = c.get('c ldl')
     a['_c_mdl'] = c.get('c mdl')
     a['c_dq'] = c.get('c dq')
+    a['c_ca_ra_pin'] = c.get('c ca ra pin')
     a['_c_within_layer'] = w.get('min pitch')
     a['_c_within_layer_top'] = w.get('min pitch top')
     a['_c_within_layer_sparse'] = w.get('sparse')
@@ -246,10 +343,17 @@ def tech(file_path):
         'rowdec_scale_conf': conf.get('row decode scale conf'), 
         'swd_scale_conf': conf.get('swd scale conf'),
         'blsa_scale_conf': conf.get('blsa scale conf'),
-        'tsv_pitch': tsv.get('tsv pitch'), 
-        'tsv_koz': tsv.get('tsv koz'),
-        'tsv_height': tsv.get('tsv height')
     }
+
+    # tsv (optional in scaled config, can be overridden by timing baseline)
+    if tsv.get('tsv pitch') is not None:
+        tech_details['tsv_pitch'] = tsv['tsv pitch']
+    if tsv.get('tsv koz') is not None:
+        tech_details['tsv_koz'] = tsv['tsv koz']
+    if tsv.get('tsv height') is not None:
+        tech_details['tsv_height'] = tsv['tsv height']
+    if tsv.get('ubump pitch') is not None:
+        tech_details['ubump_pitch'] = tsv['ubump pitch']
 
     # get baseline
     baseline_path = tech.get('baseline')

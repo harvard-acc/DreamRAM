@@ -47,8 +47,8 @@
             "atom size": 256
         },
         "calibration": {
-            "tck": 2,
-            "tcl": 28
+            "tck": 2.125,
+            "tcl": 30
         },
         "timing baseline": "configs/tech/baseline/hbm3_timing_baseline.json"
     }

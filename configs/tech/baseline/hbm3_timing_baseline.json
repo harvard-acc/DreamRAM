@@ -1,0 +1,40 @@
+{
+    "timing": {
+        "description": "HBM3 timing calibration at 8 Gbps, mat_rows=512",
+        "sense amp": {
+            "trcd": 18,
+            "trcd signal": 2.9,
+            "wordlines ref": 512,
+            "trcd brvsa": 10.8,
+            "brv delta v boost": 1.75,
+            "brvsa cs proportion": 0.89,
+            "brvsa height ratio": 1.33,
+            "cell leak": 0.2,
+            "min delta v": 0.1,
+            "mdl over mat height ratio": 1.26
+        },
+        "decomposition": {
+            "trcdwr blsa fraction": 0.404,
+            "tras restore": 9.0,
+            "twr restore": 18.6,
+            "trrds": 2.5,
+            "trrdl": 2.5
+        },
+        "calibration": {
+            "tck": 2.0,
+            "tcl": 28,
+            "die y": 11000
+        },
+        "voltage": {
+            "vcore": 0.9,
+            "vperi": 1.2,
+            "vpre ldl": 0.6
+        },
+        "tsv": {
+            "tsv pitch": 25,
+            "tsv koz": 4,
+            "tsv height": 30,
+            "ubump pitch": 40
+        }
+    }
+}

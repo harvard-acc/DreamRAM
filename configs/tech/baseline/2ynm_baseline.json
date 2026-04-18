@@ -12,7 +12,8 @@
             "tsv height": 50,
             "tsv c": 1.1,
             "tsv r load": 100,
-            "tsv c load": 0.12
+            "tsv c load": 0.12,
+            "ubump pitch": 55
         },
         "capacitance": {
             "c bus": 0.0003,
@@ -25,7 +26,8 @@
             "c csl": 0.00098,
             "c ldl": 0.00049,
             "c mdl": 0.00049,
-            "c dq": 2.4,
+            "c dq": 1.58,
+            "c ca ra pin": 0.5,
             "same layer proportions": {
                 "min pitch": 0.8,
                 "min pitch top": 0.89,
@@ -36,7 +38,7 @@
         "sense amp": {
             "type": {
                 "blsa": {
-                    "trcd": 13.9,
+                    "trcd": 18,
                     "trcd signal": 2.9,
                     "wordlines ref": 640
                 },

@@ -2,17 +2,17 @@
     "memconfig": {
         "baseline": "configs/mem/baseline/hbm3_baseline.json",
         "organization": {
-            "ranks": [1,2],
-            "channels": [8,16,32,64,128],
-            "channels per die": [2,4,8],
+            "sids": [1,2],
+            "channels": [8,12,16,24,32,48,64],
+            "channels per die": [2,3,4,6,8],
             "pseudochannels": [2],
             "horizontal bankgroups": [1,2],
-            "vertical bankgroups": [2,4,8],
+            "vertical bankgroups": [2,4],
             "banks": [2,4,8]
         },
         "bank": {
-            "subarrays": [8,12,16,24,32],
-            "mats": [16,32,64]
+            "subarrays": [8,12,16,24],
+            "mats": [16,32]
         },
         "mat": {
             "wordlines": [256,512,1024],
@@ -22,22 +22,22 @@
             "type": ["blsa","brvsa"]
         },
         "databus": {
-            "pages per bgbus mux": [4],
+            "pages per bgbus mux": [1,2],
             "mdl-bgbus serdes": [1],
             "bgbuses per gbus": [2],
             "bgbus-gbus serdes": [1],
-            "gbuses": [2],
-            "gbus-tsv serdes": [4],
-            "tsv-dq serdes": [4]
+            "gbus-tsv serdes": [1],
+            "tsv-dq serdes": [8]
         },
         "mods": {
             "ha layout": [0,1],
             "ha full": [0,1],
-            "subchannels": [1,4,16],
-            "mdl over mat": [0,1],
-            "salp groups": [1,2],
-            "salp all": [0,1],
-            "mdls": [8,16,32,64,128],
+            "subchannels": [1,2,4,8],
+            "mdl/csl config": [0,1,3],
+            "csl mdl shared layer": [0,1],
+            "salp groups": [1],
+            "salp all": [0],
+            "mdls": [8,16,32,64],
             "atom size": [256]
         }
     }

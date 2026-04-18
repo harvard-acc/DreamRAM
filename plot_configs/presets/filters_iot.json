@@ -1,0 +1,57 @@
+{
+  "x_axis": "total_area_mmmm",
+  "y_axis": "metric_e_per_bit_closed",
+  "color_axis": "user",
+  "pareto_enabled": true,
+  "draw_all_paretos_for_discretized_colors": true,
+  "show_best_matching_rows": true,
+  "x_pareto_direction": "min",
+  "y_pareto_direction": "min",
+  "z_order": "lowest",
+  "x_log_scale": true,
+  "y_log_scale": true,
+  "color_log_scale": true,
+  "filters": [
+    {
+      "column": "capacity_gbytes",
+      "min": 0.25,
+      "max": 2.0
+    },
+    {
+      "column": "csl_mdl_over_mat",
+      "min": 1.0,
+      "max": 1.0
+    },
+    {
+      "column": "mdl_over_mat",
+      "min": 1.0,
+      "max": 1.0
+    },
+    {
+      "column": "metric_e_per_bit_closed",
+      "max": 4.336
+    },
+    {
+      "column": "total_area_mmmm",
+      "max": 1030.191
+    },
+    {
+      "column": "bw_gbytes",
+      "min": 512.0
+    },
+    {
+      "column": "dies",
+      "max": 2.0
+    }
+  ],
+  "best_match_sort": [
+    {
+      "column": "metric_e_per_bit_closed",
+      "direction": "min"
+    },
+    {
+      "column": "bw_gbytes",
+      "direction": "max"
+    }
+  ]
+}
