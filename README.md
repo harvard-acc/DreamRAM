@@ -65,11 +65,13 @@ python3 tier_generator.py OUTPUT_LABEL
 ```
 
 ### Design Space Explorer and Visualizer
-After generating the data, the 
+To run the DreamRAM explorer on a data sweep named OUTPUT_LABEL, after adding design tiers:
 ```
-python3 dreamram_explorer.py /path/to/data/csv
+python3 dreamram_explorer.py /data/OUTPUT_LABEL/hbm3_OUTPUT_LABEL_user.csv
 ```
+
 ![A screen capture of the Dream RAM visualization tool, as described below.](.images/fig-vis.png)
+
 #### Usage (Manual)
 The DreamRAM Explorer allows you to specify the following inputs for the visualization: 
 1. **Axes:** Use the dropdown menus at the top of the page to specify which input/output/metric to use for the x, y, and color axes. 
