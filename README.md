@@ -69,7 +69,7 @@ After generating the data, the
 ```
 python3 dreamram_explorer.py /path/to/data/csv
 ```
-![A screen capture of the Dream RAM visualization tool, as described below.](.images/eb_casestudy_bw.png)
+![A screen capture of the Dream RAM visualization tool, as described below.](.images/fig-vis.png)
 #### Usage (Manual)
 The DreamRAM Explorer allows you to specify the following inputs for the visualization: 
 1. **Axes:** Use the dropdown menus at the top of the page to specify which input/output/metric to use for the x, y, and color axes. 
