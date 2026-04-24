@@ -10,10 +10,11 @@ def add_tiers(csv_file_src, csv_file_tiers):
         Generate user tiers from csv_file_src, save augmented csv to csv_file
     """
     try:
+        print("reading from", csv_file_src)
+        
         # Read the CSV file
         data = pd.read_csv(csv_file_src).astype('float32')
         
-        print("reading from", csv_file_src)
         print("generating tiers and mat routing scheme")
 
 
@@ -35,17 +36,20 @@ def add_tiers(csv_file_src, csv_file_tiers):
         data['user'] -= [(data['csl_mdl_shared_layer'][x]==data['csl_mdl_shared_layer'][0]) for x in range(len(data['id']))]
         # exponentiate
         data['user'] = [2**data['user'][x] for x in range(len(data['id']))]
-        print(f"\nTier A count: {sum(data['user']==1)}")
-        print(f"Tier B count: {sum(data['user']==2)}")
-        print(f"Tier C count: {sum(data['user']==3)}")
-        print(f"Tier D count: {sum(data['user']==4)}")
-        print(f"Tier E count: {sum(data['user']==5)}")
+        print(f"\nTier A count: {sum(data['user']<=2**1)-1}")
+        print(f"Tier B count: {sum(data['user']<=2**2)-1}") # inclusive of lower tiers
+        print(f"Tier C count: {sum(data['user']<=2**3)-1}")
+        print(f"Tier D count: {sum(data['user']<=2**4)-1}")
+        print(f"Tier E count: {sum(data['user']<=2**5)-1}")
         
-        print("\nNote: if the sweep includes the baseline, the baseline will be counted twice here and below.\nAdjust accordingly.")
+        #print("\nNote: if the sweep includes the baseline, the baseline will be counted twice here and below.\nAdjust accordingly.")
+        # this is now handled by subtracting 1 from all tiers, removing the duplicate baseline from just the count (not data). 
+        # baseline by definition must be in lowest tier
+        # also, this does not affect the hull sizes below because it is a duplicate
 
         # append mat routing scheme
         #data['mat_scheme'] = [2**(1 + data['csl_mdl_shared_layer'][x] + data['mdl_over_mat'][x] + data['csl_mdl_over_mat'][x] + (1-data['csl_mdl_shared_layer'][x])*2) for x in range(len(data['id']))]
-    
+        print(f"Saving to {csv_file_tiers}")
         data.to_csv(csv_file_tiers)
 
         print(f"appended user tiers and saved to {csv_file_tiers}\n")
@@ -84,17 +88,19 @@ if __name__ == '__main__':
     if not os.path.exists(csv_file_tiers):
         print("Adding Tiers...")
         add_tiers(csv_file_src, csv_file_tiers)
+    else:
+        print("Tiers file already exists. Using that instead of regenerating...")
 
     data = pd.read_csv(csv_file_tiers)
 
-    sets = [data[data["user"] <= i][['bw_gbytes','capacity_gbytes','total_area_mmmm','worst_latency_ns','metric_e_per_bit_closed']] for i in range(1, 6)]
+    sets = [data[data["user"] <= 2**i][['bw_gbytes','capacity_gbytes','total_area_mmmm','worst_latency_ns','metric_e_per_bit_closed']] for i in range(1, 6)]
     
     hulls = [spatial.ConvexHull(sets[i]) for i in range(5)]
 
     metrics = ['bw_gbytes','capacity_gbytes','total_area_mmmm','worst_latency_ns','metric_e_per_bit_closed']
 
 
-    print("\nCONVEX HULL DATA\n")
+    print("\nCONVEX HULL DATA (RAW)\n")
 
     for i in range(5):
         print(i+1)
@@ -106,7 +112,7 @@ if __name__ == '__main__':
 
     print('user', 'count', 'convex_hull_5d_volume', 'bandwidth_min', 'bandwidth_max', 'capacity_min', 'capacity_max', 'area_min', 'area_max', 'latency_min', 'latency_max', 'energy_min', 'energy_max', sep=',')
     for i in range(5):
-        print(i+1, len(sets[i]['bw_gbytes']), hulls[i].volume, sep=',', end=',')
+        print(i+1, len(sets[i]['bw_gbytes'])-1, hulls[i].volume, sep=',', end=',')
         for j in range(5): 
             print(sets[i][metrics[j]].min(), sets[i][metrics[j]].max(), sep=',', end=',' if j!=4 else '')
         print()
