@@ -50,7 +50,7 @@ def add_tiers(csv_file_src, csv_file_tiers):
         # append mat routing scheme
         #data['mat_scheme'] = [2**(1 + data['csl_mdl_shared_layer'][x] + data['mdl_over_mat'][x] + data['csl_mdl_over_mat'][x] + (1-data['csl_mdl_shared_layer'][x])*2) for x in range(len(data['id']))]
         print(f"Saving to {csv_file_tiers}")
-        data.to_csv(csv_file_tiers)
+        data.to_csv(csv_file_tiers, index=False)
 
         print(f"appended user tiers and saved to {csv_file_tiers}\n")
         
@@ -83,7 +83,7 @@ if __name__ == '__main__':
         print(f"Using default data version {DATAVERSION}")
 
     csv_file_src = f'data/{DATAVERSION}/hbm3_{DATAVERSION}.csv'
-    csv_file_tiers = f'data/{DATAVERSION}/hbm3_{DATAVERSION}_users.csv'
+    csv_file_tiers = f'data/{DATAVERSION}/hbm3_{DATAVERSION}_user.csv'
 
     if not os.path.exists(csv_file_tiers):
         print("Adding Tiers...")

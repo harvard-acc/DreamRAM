@@ -1,0 +1,5 @@
+numpy>=2.4
+pandas>=3.0
+scipy>=1.17
+bokeh>=3.9
+parse>=1.19
