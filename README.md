@@ -4,7 +4,7 @@ DreamRAM is a configurable modeling and design space exploration tool for custom
 
 ![A diagram of the Dream RAM framework, showing the input parameters; the DreamRAM submodule flow; and outputs. The input parameters are listed, and fall into the stack-level, bank-level, subarray-level, or MAT-level, and include proposals from literature for half pages, subchannels, and subarray-level parallelism. The submodule flow first starts the architecture sweep and calculates the technology node scaling, then does the following: floorplanning (which gives capacity), routing and I/O (which gives area), core frequency estimation (which gives bandwidth), timing calculation (which gives latency/timing), and energy calculation.The major outputs are capacity, area, bandwidth, latency, and energy, with further breakdowns of each.](.images/dreamram-flow.png)
 
-DreamRAM is being presented at DATE 2026. Until the conference proceedings, see the preprint at [https://arxiv.org/abs/2512.12106](https://arxiv.org/abs/2512.12106). Many updates have been made since the DATE camera-ready paper, which are pushed here to the main branch. To view the DATE 2026 version of the simulator, check out the DATE2026 branch. 
+DreamRAM was presented at DATE 2026 ([doi: 10.23919/DATE69613.2026.11539402](https://ieeexplore.ieee.org/document/11539402)). Many updates have been made since the DATE paper; the most recent version of DreamRAM is pushed here to the main branch. To view the DATE 2026 version of the simulator, check out the DATE2026 branch. 
 
 **Updates since the DATE 2026 version include**: 
 - **Additional timing parameters** (tRCDWR, tRAS, tRC, tRRDS, tRRDL, tFAW, tRTP, tWR, PERI_tCK) aligned to JEDEC HBM3 values
