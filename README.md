@@ -84,7 +84,22 @@ After changing the inputs manually, press "Update plot" to generate the visualiz
 The DreamRAM Explorer can load/store the input above as a JSON file. `/plot_configs/presets` contains several example JSON inputs. To load a preset JSON file, paste it into the textbox in the top right and click "Load JSON". This updates all the inputs. Also note that any manual changes to the inputs are updated live in the textbox JSON, so you can easily save your current configuration by copying the JSON text. 
 
 ## Citation
-DreamRAM has been accepted to DATE 2026. The DATE 2026 citation will be posted after the conference. In the meantime, you can find our paper at [https://arxiv.org/abs/2512.12106](https://arxiv.org/abs/2512.12106)
+If you found DreamRAM useful for your work, you can cite us as follows:
+
+V. Cai, J. Zhou, D. Brooks and G. -Y. Wei, "DreamRAM: A Fine-Grained Configurable Design Space Modeling Tool for Custom 3D Die-Stacked DRAM," *2026 Design, Automation & Test in Europe Conference (DATE)*, Verona, Italy, 2026, pp. 1-7, doi: 10.23919/DATE69613.2026.11539402.
+```
+@INPROCEEDINGS{11539402,
+  author={Cai, Victor and Zhou, Jennifer and Brooks, David and Wei, Gu-Yeon},
+  booktitle={2026 Design, Automation & Test in Europe Conference (DATE)}, 
+  title={DreamRAM: A Fine-Grained Configurable Design Space Modeling Tool for Custom 3D Die-Stacked DRAM}, 
+  year={2026},
+  volume={},
+  number={},
+  pages={1-7},
+  doi={10.23919/DATE69613.2026.11539402},
+  ISSN={1558-1101},
+  month={April},}
+```
 
 ## Authors
 Victor Cai, Jennifer Zhou, Haebin Do, David Brooks, and Gu-Yeon Wei
